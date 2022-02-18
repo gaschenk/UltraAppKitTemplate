@@ -1,3 +1,4 @@
+// Source https://www.ultraengine.com/learn/CPP/CreateProgressBar
 #include "UltraEngine.h"
 
 using namespace UltraEngine;
@@ -28,11 +29,9 @@ int main(int argc, const char* argv[])
 	auto progresstimer = CreateTimer(500);
 	ListenEvent(EVENT_TIMERTICK, progresstimer, UpdateProgress, widget);
 
-	while (true)
-	{
+	while (true) {
 		const Event ev = WaitEvent();
-		switch (ev.id)
-		{
+		switch (ev.id) {
 		case EVENT_WINDOWCLOSE:
 			return 0;
 			break;
