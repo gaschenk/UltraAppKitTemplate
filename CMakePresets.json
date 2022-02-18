@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default-msvc",
+      "hidden": true,
+      "displayName": "Default MSVC",
+      "description": "Default build using Visual Studio and vcpkg",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      },
+      "cacheVariables": {
+      },
+      "vendor": {
+        "jetbrains.com/clion": {
+          "toolchain": "VS 2022"
+        }
+      }
+    },
+    {
+      "name": "default-msvc-win",
+      "inherits": "default-msvc",
+      "hidden": true,
+      "displayName": "Default MSVC Windows",
+      "description": "Default build using Visual Studio and vcpkg",
+      "cacheVariables": {
+        "UAK_ROOT_DIRECTORY": "C:/Program Files (x86)/Steam/steamapps/common/Ultra App Kit",
+        "ULTRA_ENGINE_KIT": "GUI"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "default-msvc-win-static",
+      "inherits": "default-msvc-win",
+      "hidden": true,
+      "displayName": "Default MSVC Windows Static",
+      "description": "Default build using Visual Studio and vcpkg",
+      "cacheVariables": {
+      }
+    },
+    {
+      "name": "default-msvc-release-win",
+      "inherits": "default-msvc-win",
+      "displayName": "Default MSVC Release",
+      "description": "Default build using Visual Studio and vcpkg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "default-msvc-debug-win",
+      "inherits": "default-msvc-win",
+      "displayName": "Default MSVC Debug",
+      "description": "Default build using Visual Studio and vcpkg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "MSVC-Debug-Windows",
+      "configurePreset": "default-msvc-debug-win",
+      "environment": {
+      },
+      "cleanFirst": true
+    },
+    {
+      "name": "MSVC-Release-Windows",
+      "configurePreset": "default-msvc-release-win",
+      "environment": {
+      },
+      "cleanFirst": true
+    }
+  ]
+}
