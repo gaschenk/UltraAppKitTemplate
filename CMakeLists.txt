@@ -84,7 +84,7 @@ elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")
         message(FATAL_ERROR Unknown MacOS arch.)
     endif ()
 
-    set(UAK_LIB_FILE AppKit.a)
+    set(UAK_LIB_FILE libAppKit.a)
     set(OS_NAME MacOS)
 
 elseif (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
@@ -107,7 +107,7 @@ if (${CMAKE_BUILD_TYPE} MATCHES Release)
 elseif (${CMAKE_BUILD_TYPE} MATCHES Debug)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE /ENTRY:mainCRTStartup")
     add_definitions(-MTd)
-    add_compile_definitions(ultra00 _DEBUG)
+    add_compile_definitions(${PROJECT_NAME} _DEBUG)
 endif ()
 
 
